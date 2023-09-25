@@ -11,6 +11,16 @@ Plug 'vim-airline/vim-airline'
 Plug 'frazrepo/vim-rainbow'
 Plug 'morhetz/gruvbox'
 
+" for golang.."
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'valloric/youcompleteme', { 'do': 'python3 ./install.py --clang-completer --go-completer --js-completer'}
+
+" 편의.."
+Plug 'milkypostman/vim-togglelist'
+Plug 'AndrewRadev/splitjoin.vim'
+
 call plug#end()
 
 nmap <F9> :NERDTreeToggle
