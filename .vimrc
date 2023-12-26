@@ -8,40 +8,44 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'frazrepo/vim-rainbow'
 Plug 'morhetz/gruvbox'
 
-" for golang.."
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'valloric/youcompleteme', { 'do': 'python3 ./install.py --clang-completer --go-completer --js-completer'}
-
-" 편의.."
-Plug 'milkypostman/vim-togglelist'
-Plug 'AndrewRadev/splitjoin.vim'
-
 call plug#end()
+
 
 nmap <F9> :NERDTreeToggle
 nmap <F8> :TagbarToggle
 let g:rainbow_active = 1
 
-set termguicolors
-let g:gruvbox_contrast_dark="hard"
+
+"" vim-airline setting
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_highlighting_cache = 1
+let g:airline_powerline_fonts = 1
+
+
 set background=dark
-autocmd vimenter * colorscheme gruvbox
+set termguicolors
+colorscheme gruvbox
 
 
-"============ kernel source 경로 ==========="
+
+"============ kernel source ==========="
 let kernel_src_home=$PWD
 
 set number backspace=indent,eol,start
 set ruler
-set ts=4 sts=4 sw=4
+"set ts=4 sts=4 sw=4"
+set tabstop=4 softtabstop=-1 shiftwidth=4 expandtab
 
-set autoindent smartindent cindent
-set paste
+set smartindent
+set cindent
+" set paste"
 
 set ignorecase
 set showmatch
@@ -61,7 +65,7 @@ if has("autocmd")
 endif
 
 
-"============ ctags, scope 경로 ==========="
+"============ ctags, scope ==========="
 if filereadable(kernel_src_home . "/cscope.out")
     set sw=8 ts=8 sts=8
     exe "set tags+=" . kernel_src_home . "/tags"
